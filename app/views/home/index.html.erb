@@ -1,0 +1,13 @@
+<h1>Home index</h1>
+<p><h6><% if current_user %>
+	<% current_user.authorizations.each do |a|%>
+		<%= a.name %>
+		<%= a.uid %>
+	<%end%>
+	<%= current_user.email %>
+<%end%>
+</h6></p>
+<%= link_to "sign in", new_user_session_path%><br>
+<%= link_to "sign up", new_user_registration_path  unless current_user %><br>
+<%= link_to "sign out", destroy_user_session_path, :method => :delete%><br>
+<%= link_to "sign in with vk", user_omniauth_authorize_path(:vkontakte) %>
