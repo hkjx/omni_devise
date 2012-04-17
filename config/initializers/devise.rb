@@ -213,7 +213,13 @@ Devise.setup do |config|
   # up on your models and hooks.
   # config.omniauth :github, 'APP_ID', 'APP_SECRET', :scope => 'user,public_repo'
   require "omniauth-vkontakte"
+  require "omniauth-twitter"
+  require "omniauth-facebook"
+
     config.omniauth :vkontakte, '2905306'   , 'd3GxJeYldRiZ2RhSWAly', {client_options: {ssl: {ca_file: Rails.root.join('lib/assets/cacert.pem').to_s}}} 
+    config.omniauth :twitter, 'HyBY90DIMPcfhBM0lRg'   , 'Qfxq5Mpj1QkkODMbKEORINZidOujm5tVGg7arLs', {client_options: {ssl: {ca_file: Rails.root.join('lib/assets/cacert.pem').to_s}}} 
+    config.omniauth :facebook, '413434725352577'   , '3793900a52216a1cfd8ac779535b4871', {client_options: {ssl: {ca_file: Rails.root.join('lib/assets/cacert.pem').to_s}}} 
+  
   # ==> Warden configuration
   # If you want to use other strategies, that are not supported by Devise, or
   # change the failure app, you can configure them inside the config.warden block.

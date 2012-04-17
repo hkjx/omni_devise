@@ -9,6 +9,8 @@ gem 'sqlite3'
 gem 'pg'
 gem 'devise'
 gem 'omniauth-vkontakte'
+gem 'omniauth-twitter'
+gem 'omniauth-facebook'
 
 
 # Gems used only for assets and not required

@@ -1,13 +1,20 @@
 <h1>Home index</h1>
-<p><h6><% if current_user %>
-	<% current_user.authorizations.each do |a|%>
-		<%= a.name %>
-		<%= a.uid %>
-	<%end%>
+<p><h5>
+<% if current_user %>
+	<% if session[:auth_id]%>
+		<% a = current_user.authorizations.find(session[:auth_id])%>
+		Hello <%= a.name %> you authorized by <%= a.provider%><br>
+		<%= a.uid %>	
+	<%end%><br>
 	<%= current_user.email %>
 <%end%>
-</h6></p>
-<%= link_to "sign in", new_user_session_path%><br>
-<%= link_to "sign up", new_user_registration_path  unless current_user %><br>
-<%= link_to "sign out", destroy_user_session_path, :method => :delete%><br>
-<%= link_to "sign in with vk", user_omniauth_authorize_path(:vkontakte) %>
+</h5></p>
+<% unless current_user %>
+	<%= link_to "sign in", new_user_session_path%><br>
+	<%= link_to "sign up", new_user_registration_path %><br>
+<%else%>
+	<%= link_to "sign out", destroy_user_session_path, :method => :delete%><br>
+<%end%>
+<%= link_to "sign in with vk", user_omniauth_authorize_path(:vkontakte) %><br>
+<%= link_to "sign in with twitter", user_omniauth_authorize_path(:twitter) %><br>
+<%= link_to "sign in with facebook", user_omniauth_authorize_path(:facebook) %>
